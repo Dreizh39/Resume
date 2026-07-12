@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daekun Cho (Daniel) | Portfolio</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --text-dark: #1f2937;
+            --text-light: #4b5563;
+            --bg-light: #f3f4f6;
+            --bg-white: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Layout Structure */
+        .container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            min-height: 100vh;
+            max-width: 1400px;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sidebar Styling */
+        aside {
+            background-color: var(--primary-color);
+            color: var(--bg-white);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .profile-title {
+            font-size: 14px;
+            color: #93c5fd;
+            font-weight: 500;
+            margin-bottom: 30px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-info {
+            width: 100%;
+            margin-bottom: 35px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .contact-item i {
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+            color: #93c5fd;
+        }
+
+        .sidebar-section {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .sidebar-section h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            color: #93c5fd;
+        }
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .lang-level {
+            color: #cbd5e1;
+        }
+
+        /* Main Content Styling */
+        main {
+            background-color: var(--bg-white);
+            padding: 50px 60px;
+        }
+
+        .objective-box {
+            background-color: #f8fafc;
+            border-left: 4px solid var(--secondary-color);
+            padding: 20px;
+            margin-bottom: 40px;
+            font-size: 16px;
+            color: var(--text-light);
+            font-style: italic;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .section-title i {
+            margin-right: 10px;
+        }
+
+        /* Experience & Education Cards */
+        .timeline-item {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .role-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .company-name {
+            font-size: 15px;
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .duration {
+            font-size: 14px;
+            color: #6b7280;
+            background-color: #f3f4f6;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .timeline-body ul {
+            padding-left: 20px;
+            color: var(--text-light);
+            font-size: 15px;
+        }
+
+        .timeline-body li {
+            margin-bottom: 5px;
+        }
+
+        /* Skills Badges */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .skill-badge {
+            background-color: #eff6ff;
+            color: var(--secondary-color);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            border: 1px solid #dbeafe;
+        }
+
+        .tech-section {
+            margin-top: 15px;
+        }
+
+        .tech-category {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            aside {
+                padding: 40px 20px;
+            }
+            main {
+                padding: 40px 20px;
+            }
+            .timeline-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .duration {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside>
+            <!-- 팁: 본인의 사진 파일명을 지정하거나 경로를 맞춰주세요 -->
+            <img src="profile.jpg" alt="Daekun Cho" class="profile-img">
+            <h1 class="profile-name">Daekun Cho</h1>
+            <div class="profile-title">(Daniel)</div>
+            
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Aveiro, Portugal</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+351-910-268-475</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span><a href="mailto:daekuncho7@gmail.com">daekuncho7@gmail.com</a></span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span><a href="https://linkedin.com/in/dk-energybank" target="_blank">dk-energybank</a></span>
+                </div>
+            </div>
+
+            <!-- Languages -->
+            <div class="sidebar-section">
+                <h3>Languages</h3>
+                <div class="lang-item">
+                    <span>Korean</span>
+                    <span class="lang-level">Native</span>
+                </div>
+                <div class="lang-item">
+                    <span>English</span>
+                    <span class="lang-level">Professional</span>
+                </div>
+                <div class="lang-item">
+                    <span>German</span>
+                    <span class="lang-level">Basic Int. (A2)</span>
+                </div>
+                <div class="lang-item">
+                    <span>Portuguese</span>
+                    <span class="lang-level">Beginner (A1)</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Professional Objective -->
+            <div class="objective-box">
+                Robotics engineer with international sales and technical support experience in collaborative, mobile, and humanoid robotics.
+            </div>
+
+            <!-- Skills -->
+            <section>
+                <h2 class="section-title"><i class="fas fa-cogs"></i> Core Expertise & Skills</h2>
+                <div class="skills-container">
+                    <span class="skill-badge">Industrial Robotics & Automation</span>
+                    <span class="skill-badge">Technical Sales & Business Development</span>
+                    <span class="skill-badge">Robot Commissioning & Tech Support</span>
+                    <span class="skill-badge">Customer Problem Solving</span>
+                    <span class="skill-badge">Cross-functional Collaboration</span>
+                </div>
+
+                <div class="tech-section">
+                    <div class="tech-category">Programming & Engineering Tools:</div>
+                    <div class="skills-container">
+                        <span class="skill-badge">C</span>
+                        <span class="skill-badge">RobotC</span>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">MATLAB</span>
+                        <span class="skill-badge">AutoCAD</span>
+                        <span class="skill-badge">CoppeliaSim</span>
+                    </div>
+                </div>
+
+                <div class="tech-section">
+                    <div class="tech-category">Cobot Ecosystems:</div>
+                    <div class="skills-container">
+                        <span class="skill-badge">UR (Universal Robots)</span>
+                        <span class="skill-badge">Rainbow Robotics</span>
+                        <span class="skill-badge">Doosan Robotics</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Work Experience -->
+            <section>
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> Work Experience</h2>
+                
+                <!-- Transcom -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="role-title">Customer Support Representative</div>
+                            <div class="company-name">Transcom Portugal</div>
+                        </div>
+                        <span class="duration">May 2026 - Present</span>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>Providing high-quality customer service for international clients through online communication.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Rainbow Robotics -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="role-title">Senior Staff</div>
+                            <div class="company-name">Rainbow Robotics</div>
+                        </div>
+                        <span class="duration">Mar 2025 - Mar 2026</span>
+                    </div>
+                    <div class="timeline-body">
+                        <strong>Global Robotics Sales & Technical Coordination:</strong>
+                        <ul>
+                            <li>Managed international B2B sales operations of advanced collaborative and humanoid robots.</li>
+                            <li>Provided profound technical consultation by thoroughly analyzing robot manuals and diagnosing complex customer technical issues.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- LG Electronics -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="role-title">Assistant Product Manager</div>
+                            <div class="company-name">LG Electronics East Africa</div>
+                        </div>
+                        <span class="duration">Oct 2024 - Dec 2024</span>
+                    </div>
+                    <div class="timeline-body">
+                        <strong>Regional Operations & Supply Coordination:</strong>
+                        <ul>
+                            <li>Managed strategic sales operations for residential air conditioners across the East African market.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- HD Hyundai Robotics -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="role-title">Associate Manager</div>
+                            <div class="company-name">HD Hyundai Robotics</div>
+                        </div>
+                        <span class="duration">Jan 2023 - Sep 2024</span>
+                    </div>
+                    <div class="timeline-body">
+                        <strong>International Mobile Robotics Sales & Operations:</strong>
+                        <ul>
+                            <li>Led international sales initiatives and account management for autonomous mobile robots (AMRs).</li>
+                            <li>Performed hands-on robot mapping, navigation setup, route configuration, and operational parameter fine-tuning.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apple Korea -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="role-title">Specialist</div>
+                            <div class="company-name">Apple Korea Limited</div>
+                        </div>
+                        <span class="duration">Feb 2022 - Jan 2023</span>
+                    </div>
+                    <div class="timeline-body">
+                        <ul>
+                            <li>Delivered top-tier customer service, tailored technical support, and product sales within the retail ecosystem.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education & Training -->
+            <section>
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education & Professional Training</h2>
+                
+                <!-- Kwangwoon Univ -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="role-title">B.Sc. in Robotics</div>
+                            <div class="company-name">Kwangwoon University (Seoul, South Korea)</div>
+                        </div>
+                        <span class="duration">Mar 2015 - Feb 2022</span>
+                    </div>
+                    <div class="timeline-body">
+                        <p style="margin-bottom: 5px;"><strong>GPA:</strong> 3.58 / 4.50 (152 Credits Completed)</p>
+                        <p><strong>Related Coursework:</strong> Introduction to Robotics (A+), Engineering Design (A+), Algorithms (A+), C Programming (A0), Embedded Systems (B+)</p>
+                    </div>
+                </div>
+
+                <!-- Exchange Student -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="role-title">Exchange Student Program</div>
+                            <div class="company-name">Westsächsische Hochschule Zwickau (Germany)</div>
+                        </div>
+                        <span class="duration">Sep 2020 - Mar 2021</span>
+                    </div>
+                </div>
+
+                <!-- Professional Training -->
+                <div class="timeline-item">
+                    <div class="timeline-header">
+                        <div>
+                            <div class="role-title">Collaborative Robot Technician & Smart Factory Consultant Program</div>
+                            <div class="company-name">Professional Training Course</div>
+                        </div>
+                        <span class="duration">Apr 2021 - Nov 2021</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>
