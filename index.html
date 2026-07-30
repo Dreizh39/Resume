@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daekun Cho (Daniel) — Robotics & International Business</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16212e;
+  --navy:#0e2a47;
+  --navy-2:#123457;
+  --line:#2e6e9e;
+  --line-soft:#7fa8c9;
+  --paper:#f3f6f6;
+  --paper-line:#d9e1e3;
+  --amber:#ff7a33;
+  --amber-soft:#ffe3d1;
+  --muted:#5a6b78;
+  --white:#ffffff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Sans',sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.65;
+  font-size:15px;
+}
+a{color:inherit;text-decoration:none}
+.mono{font-family:'IBM Plex Mono',monospace}
+a.link{color:var(--line);font-weight:600;border-bottom:1px solid var(--line-soft)}
+a.link:hover{color:var(--amber);border-color:var(--amber)}
+.icon{width:1em;height:1em;vertical-align:-0.15em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+
+/* ===== layout ===== */
+.page{display:grid;grid-template-columns:280px minmax(0,1fr);max-width:1400px;margin:0 auto;min-height:100vh}
+
+/* ===== rail ===== */
+.rail{
+  background:var(--navy);
+  color:#cfe0ee;
+  position:sticky;top:0;
+  height:100vh;
+  overflow-y:auto;
+  padding:34px 26px 26px;
+  border-right:1px solid rgba(255,255,255,.08);
+  background-image:repeating-linear-gradient(to bottom, rgba(255,255,255,.05) 0 1px, transparent 1px 40px);
+}
+.badge{
+  width:88px;height:88px;
+  border:2px solid var(--line);
+  padding:4px;
+  margin-bottom:16px;
+}
+.badge img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(.15)}
+.rail h1{font-family:'Space Grotesk',sans-serif;font-size:21px;font-weight:700;color:#fff;line-height:1.25}
+.rail .role{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);margin:6px 0 22px;font-weight:600}
+
+.field-block{margin-bottom:26px;border-top:1px dashed rgba(255,255,255,.18);padding-top:14px}
+.field-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--line-soft);margin-bottom:8px}
+.field-row{display:flex;gap:10px;font-size:12.5px;margin-bottom:7px;color:#dbe7f1;align-items:flex-start}
+.field-row i{width:14px;text-align:center;margin-top:2px;color:var(--line-soft)}
+.field-row a:hover{color:var(--amber)}
+
+.signal{display:flex;align-items:center;justify-content:space-between;font-size:12.5px;margin-bottom:8px;gap:8px}
+.bars{display:flex;gap:2px}
+.bars span{width:5px;height:10px;background:rgba(255,255,255,.15);display:inline-block}
+.bars span.on{background:var(--amber)}
+
+.tabs{list-style:none}
+.tabs li a{
+  display:flex;gap:10px;align-items:baseline;
+  font-size:12.5px;padding:8px 4px;border-radius:2px;color:#b9cbdb;
+  border-left:2px solid transparent;
+}
+.tabs li a .num{font-family:'IBM Plex Mono',monospace;color:var(--line-soft);font-size:11px}
+.tabs li a:hover, .tabs li a.active{color:#fff;border-left-color:var(--amber);background:rgba(255,122,51,.08)}
+.tabs li a.active .num{color:var(--amber)}
+
+/* ===== main ===== */
+main{padding:0 0 60px}
+.hero{
+  background:var(--navy);
+  color:#e8f0f6;
+  padding:56px 56px 52px;
+  position:relative;
+  overflow:hidden;
+  background-image:repeating-linear-gradient(to right, rgba(255,255,255,.06) 0 1px, transparent 1px 32px);
+  border-bottom:3px solid var(--amber);
+}
+.hero .kicker{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;color:var(--line-soft);text-transform:uppercase;margin-bottom:14px}
+.hero h2{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:26px;max-width:760px;line-height:1.35;color:#fff}
+.hero h2 strong{color:var(--amber)}
+.hero p{max-width:700px;margin-top:14px;color:#c3d5e3;font-size:14.5px}
+
+/* ===== sheets ===== */
+.sheet{padding:46px 56px;border-bottom:1px solid var(--paper-line)}
+.sheet-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px}
+.sheet-head .sheetno{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--amber);font-weight:600;border:1px solid var(--amber);padding:2px 8px;border-radius:2px}
+.sheet-head h3{font-family:'Space Grotesk',sans-serif;font-size:19px;font-weight:600;color:var(--navy);display:flex;gap:10px;align-items:center}
+.sheet-head h3 i{color:var(--line);font-size:16px}
+.sheet-head hr{flex:1;border:none;border-top:1px dashed var(--paper-line)}
+
+/* skills */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;
+  border:1px solid var(--line-soft);color:var(--navy);
+  padding:5px 11px;border-radius:2px;background:#fff;
+}
+.chip.core{border-color:var(--navy);background:var(--navy);color:#fff}
+.stack-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+
+/* timeline (circuit trace) */
+.trace{position:relative;padding-left:26px;border-left:2px dashed var(--line-soft)}
+.node{position:relative;margin-bottom:34px}
+.node:last-child{margin-bottom:0}
+.node::before{
+  content:"";position:absolute;left:-33px;top:4px;
+  width:11px;height:11px;border-radius:50%;
+  background:var(--amber);border:2px solid var(--navy);
+}
+.node-head{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.node-title{font-weight:700;font-size:16px;color:var(--ink)}
+.node-org{font-size:13.5px;color:var(--line);font-weight:600}
+.node-time{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);background:var(--paper-line);padding:2px 9px;border-radius:20px;white-space:nowrap;height:fit-content}
+.node ul{padding-left:18px;color:#3a4a57;font-size:14px}
+.node li{margin-bottom:5px}
+.node-note{font-size:14px;color:#3a4a57}
+.node .yt{margin-top:8px;display:inline-flex;gap:6px;align-items:center;font-size:13px}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.card{border:1px solid var(--paper-line);background:#fff;border-radius:3px;padding:16px 18px;border-left:3px solid var(--line)}
+.card.award{border-left-color:var(--amber)}
+.card .kind{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.card h4{font-size:15px;color:var(--navy);margin-bottom:4px}
+.card .meta{font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--muted);margin-bottom:8px}
+.card p{font-size:13.5px;color:#3a4a57}
+
+/* reports */
+.filelist{display:flex;flex-direction:column;gap:10px}
+.file-row{
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  border:1px solid var(--paper-line);background:#fff;border-radius:3px;padding:13px 16px;
+}
+.file-id{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--amber);font-weight:600;margin-right:10px}
+.file-title{font-weight:600;font-size:14px}
+.file-meta{font-size:12px;color:var(--muted)}
+.file-link{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--line);white-space:nowrap;border:1px solid var(--line-soft);padding:5px 10px;border-radius:2px}
+.file-link:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+footer.titleblock{
+  padding:26px 56px;background:var(--navy);color:#9fb6c9;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  font-family:'IBM Plex Mono',monospace;font-size:11.5px;
+}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+@media(max-width:920px){
+  .page{grid-template-columns:1fr}
+  .rail{position:relative;height:auto}
+  .hero,.sheet,footer.titleblock{padding:34px 22px}
+  .node-time{align-self:flex-start}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<nav class="rail">
+  <div class="badge"><img src="data:image/jpeg;base64,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" alt="Daekun Cho"></div>
+  <h1>Daekun Cho</h1>
+  <div class="role">Daniel · Robotics &amp; Int'l Business</div>
+
+  <div class="field-block">
+    <div class="field-label">Contact</div>
+    <div class="field-row"><svg class="icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span>South Korea (Incheon), Portugal (Aveiro)</span></div>
+    <div class="field-row"><svg class="icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><a href="mailto:daekuncho7@gmail.com">daekuncho7@gmail.com</a></div>
+    <div class="field-row"><svg class="icon" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg><a href="https://linkedin.com/in/dk-energybank" target="_blank">linkedin.com/in/dk-energybank</a></div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-label">Language Signal</div>
+    <div class="signal"><span>Korean</span><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div></div>
+    <div class="signal"><span>English</span><div class="bars"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span></span></div></div>
+    <div class="signal"><span>German</span><div class="bars"><span class="on"></span><span class="on"></span><span></span><span></span><span></span></div></div>
+    <div class="signal"><span>Chinese</span><div class="bars"><span class="on"></span><span></span><span></span><span></span><span></span></div></div>
+    <div class="signal"><span>Portuguese</span><div class="bars"><span class="on"></span><span></span><span></span><span></span><span></span></div></div>
+  </div>
+
+  <div class="field-block">
+    <div class="field-label">Sheet Index</div>
+    <ul class="tabs" id="tabs">
+      <li><a href="#skills"><span class="num">01</span> Core Expertise</a></li>
+      <li><a href="#work"><span class="num">02</span> Work Experience</a></li>
+      <li><a href="#internship"><span class="num">03</span> Internship</a></li>
+      <li><a href="#education"><span class="num">04</span> Education</a></li>
+      <li><a href="#awards"><span class="num">05</span> Awards</a></li>
+      <li><a href="#langcert"><span class="num">06</span> Language Certs</a></li>
+      <li><a href="#activities"><span class="num">07</span> Activities</a></li>
+      <li><a href="#presentations"><span class="num">08</span> Presentations</a></li>
+      <li><a href="#reports"><span class="num">09</span> Reports</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <header class="hero">
+    <div class="kicker mono">Portfolio / Sheet 00 — Overview</div>
+    <h2>Robotics engineer turned <strong>international sales &amp; technical coordinator</strong> — built and commissioned robots in the lab, then sold and supported them across four continents.</h2>
+    <p>Hands-on experience across collaborative, mobile, and humanoid robotics, combined with international B2B sales, technical coordination, customer support, export operations, and cross-cultural communication.</p>
+
+  </header>
+
+  <section id="skills" class="sheet reveal">
+    <div class="sheet-head"><span class="sheetno">01</span><h3><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>Core Expertise &amp; Skills</h3><hr></div>
+    <div class="chips">
+      <span class="chip core">Industrial Robotics &amp; Automation</span>
+      <span class="chip core">Technical Sales &amp; Business Development</span>
+      <span class="chip core">Robot Commissioning &amp; Technical Support</span>
+      <span class="chip core">Customer Problem Solving</span>
+      <span class="chip core">Export &amp; Sales Operations</span>
+      <span class="chip core">Cross-functional Collaboration</span>
+    </div>
+    <div class="stack-label">Programming &amp; Engineering Tools</div>
+    <div class="chips">
+      <span class="chip">C</span><span class="chip">RobotC</span><span class="chip">Python</span>
+      <span class="chip">MATLAB</span><span class="chip">AutoCAD</span><span class="chip">CoppeliaSim</span>
+    </div>
+    <div class="stack-label">Robotics Ecosystems</div>
+    <div class="chips">
+      <span class="chip">UR</span><span class="chip">Rainbow Robotics</span>
+      <span class="chip">Doosan Robotics</span><span class="chip">HD Hyundai Robotics</span>
+    </div>
+  </section>
+
+  <section id="work" class="sheet reveal">
+    <div class="sheet-head"><span class="sheetno">02</span><h3><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>Work Experience</h3><hr></div>
+    <div class="trace">
+      <div class="node">
+        <div class="node-head"><div><div class="node-title">Customer Support Representative</div><div class="node-org">Transcom Portugal</div></div><span class="node-time">May 2026 – Present</span></div>
+        <p class="node-note">Providing customer service and problem resolution for international customers through digital communication channels.</p>
+      </div>
+      <div class="node">
+        <div class="node-head"><div><div class="node-title">Senior Staff · Overseas Sales Team</div><div class="node-org">Rainbow Robotics</div></div><span class="node-time">Mar 2025 – Mar 2026</span></div>
+        <ul>
+          <li>Managed international B2B sales operations for collaborative and humanoid robots.</li>
+          <li>Sold 41 collaborative robots and 39 humanoid robots through global sales activities.</li>
+          <li>Provided technical consultation by analyzing robot manuals and diagnosing customer technical issues.</li>
+        </ul>
+        <div class="yt"><svg class="icon" style="color:#ff7a33" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg><a class="link" href="https://youtu.be/Dp0JxQzJ-NM" target="_blank">RB-Y1 Introduction Video</a></div>
+      </div>
+      <div class="node">
+        <div class="node-head"><div><div class="node-title">Assistant Product Manager</div><div class="node-org">LG Electronics · East Africa</div></div><span class="node-time">Oct 2024 – Dec 2024</span></div>
+        <ul>
+          <li>Managed sales operations for residential air conditioners across East African markets.</li>
+          <li>Generated approximately USD 1 million in sales during October–December 2024.</li>
+        </ul>
+        <div class="yt"><svg class="icon" style="color:#ff7a33" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg><a class="link" href="https://youtu.be/mh0srwtO7I4" target="_blank">LG RAC Mosquito Away Launch in Tanzania</a></div>
+      </div>
+      <div class="node">
+        <div class="node-head"><div><div class="node-title">Associate Manager · Mobile Robotics Business</div><div class="node-org">HD Hyundai Robotics</div></div><span class="node-time">Jan 2023 – Sep 2024</span></div>
+        <ul>
+          <li>Led international sales initiatives and distributor development for autonomous mobile robots.</li>
+          <li>Performed hands-on robot mapping, navigation setup, route configuration, and operational parameter fine-tuning.</li>
+          <li>Supported overseas subsidiaries with commissioning, import/export documentation, certifications, and urgent logistics coordination.</li>
+        </ul>
+        <div class="yt"><svg class="icon" style="color:#ff7a33" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg><a class="link" href="https://youtu.be/ctkw4q2nfwA" target="_blank">Disinfection Robot D1</a>&nbsp;·&nbsp;<a class="link" href="https://youtu.be/KkjlHvB6QuY" target="_blank">Serving Robot S1</a></div>
+      </div>
+      <div class="node">
+        <div class="node-head"><div><div class="node-title">Specialist</div><div class="node-org">Apple Korea Limited</div></div><span class="node-time">Feb 2022 – Jan 2023</span></div>
+        <ul><li>Delivered customer service, technical support, product sales, and multilingual assistance to international customers at Apple Garosugil.</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="internship" class="sheet reveal">
+    <div class="sheet-head"><span class="sheetno">03</span><h3><svg class="icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>Internship</h3><hr></div>
+    <div class="trace">
+      <div class="node">
+        <div class="node-head"><div><div class="node-title">Foreign National Student Intern Program</div><div class="node-org">Public Affairs Section · U.S. Embassy Seoul</div></div><span class="node-time">Jun 2015 – Jan 2016</span></div>
+        <p class="node-note"><strong>504 hours</strong> of internship experience supporting public affairs-related activities in an international diplomatic environment.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="sheet reveal">
+    <div class="sheet-head"><span class="sheetno">04</span><h3><svg class="icon" viewBox="0 0 24 24"><polygon points="12,3 2,8 12,13 22,8"></polygon><path d="M6 10.5V15c0 1.66 2.69 3 6 3s6-1.34 6-3v-4.5"></path><line x1="22" y1="8" x2="22" y2="14"></line></svg>Education &amp; Professional Training</h3><hr></div>
+    <div class="trace">
+      <div class="node">
+        <div class="node-head"><div><div class="node-title">B.Sc. in Robotics</div><div class="node-org">Kwangwoon University · Seoul, South Korea</div></div><span class="node-time">Mar 2015 – Feb 2022</span></div>
+        <p class="node-note"><strong>GPA:</strong> 3.58 / 4.50 · 152 Credits Completed<br><strong>Related Coursework:</strong> Introduction to Robotics (A+), Engineering Design (A+), Algorithms (A+), C Programming (A0), Embedded Systems (B+)</p>
+      </div>
+      <div class="node">
+        <div class="node-head"><div><div class="node-title">Exchange Student Program</div><div class="node-org">Westsächsische Hochschule Zwickau · Germany</div></div><span class="node-time">Sep 2020 – Mar 2021</span></div>
+        <p class="node-note">International exchange experience in Germany. <a class="link" href="https://www.freiepresse.de/zwickau/zwickau/zwickauer-austauschstudent-chief-cho-fordert-kochprofis-heraus-artikel11320900" target="_blank">Read related article</a></p>
+      </div>
+      <div class="node">
+        <div class="node-head"><div><div class="node-title">Collaborative Robot Technician &amp; Smart Factory Consultant Program</div><div class="node-org">Professional Training Course</div></div><span class="node-time">Apr 2021 – Nov 2021</span></div>
+        <p class="node-note">Specialized training in collaborative robotics and smart factory technologies. <a class="link" href="https://youtu.be/9BqmLMO8EYg" target="_blank">View training video</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="awards" class="sheet reveal">
+    <div class="sheet-head"><span class="sheetno">05</span><h3><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"></circle><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"></path></svg>Awards &amp; Academic Achievements</h3><hr></div>
+    <div class="grid">
+      <div class="card"><div class="kind">Certificate</div><h4>Demand Planner Level 1</h4><div class="meta">LG Electronics · 5 Dec 2024</div><p>Professional certificate in demand planning fundamentals.</p></div>
+      <div class="card award"><div class="kind">Award</div><h4>Merit Award</h4><div class="meta">Kwangwoon University · Dec 2021</div><p>2021 Kwangwoon University English Competition</p></div>
+      <div class="card award"><div class="kind">Award</div><h4>Grand Prize</h4><div class="meta">Jeonbuk National University · Feb 2020</div><p>8th International Students Joint Capstone Design Project (i-CAPS) Competition · 2020</p><p><a class="link" href="https://youtu.be/LUpNAAY84VY" target="_blank">Presentation Video</a></p></div>
+      <div class="card award"><div class="kind">Award</div><h4>Silver Prize</h4><div class="meta">Jeonbuk National University · Dec 2020</div><p>15th International Student Multidisciplinary Design Camp ES Contest</p><p><a class="link" href="https://youtu.be/2sPm2gTT0VY" target="_blank">Presentation Video</a></p></div>
+    </div>
+  </section>
+
+  <section id="langcert" class="sheet reveal">
+    <div class="sheet-head"><span class="sheetno">06</span><h3><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>Language Certifications</h3><hr></div>
+    <div class="grid">
+      <div class="card"><div class="kind">English</div><h4>TOEIC Speaking &amp; Writing</h4><p>Speaking 160 · Level 7 &nbsp;|&nbsp; Writing 180 · Level 8</p><div class="meta">17 Nov 2021</div><h4 style="margin-top:10px">OPIc</h4><p>Advanced Low (AL)</p><div class="meta">28 May 2023</div></div>
+      <div class="card"><div class="kind">German</div><h4>Goethe-Zertifikat A2</h4><p>69 / 100 · Pass</p><div class="meta">22 Sep 2022</div></div>
+      <div class="card"><div class="kind">Chinese</div><h4>HSK Level 1</h4><p>183 / 200 · Pass</p><div class="meta">9 Aug 2020</div></div>
+    </div>
+  </section>
+
+  <section id="activities" class="sheet reveal">
+    <div class="sheet-head"><span class="sheetno">07</span><h3><svg class="icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Extracurricular Activities</h3><hr></div>
+    <div class="grid">
+      <div class="card"><div class="kind">Activity</div><h4>Kwangwoon University Admission Ambassador</h4><div class="meta">Kwangwoon University Admissions Office · Apr 2015 – Oct 2016</div><p>University promotion and student ambassador activities. <a class="link" href="https://www.youtube.com/@%EA%B4%91%EC%9A%B4%EB%8C%80%ED%95%99%EA%B5%90%EC%9E%85%ED%95%99%EC%B2%98%EA%B4%91%EC%9A%B4" target="_blank">YouTube Channel</a></p></div>
+      <div class="card"><div class="kind">Activity</div><h4>Major Counseling Volunteer · Robotics</h4><div class="meta">Korean Council for University Education · Apr 2015 – Feb 2016</div><p>Provided academic and career guidance related to robotics. <a class="link" href="https://youtu.be/0APbrrwegcY" target="_blank">Reference Video</a></p></div>
+      <div class="card"><div class="kind">Activity</div><h4>LG Social Challenger</h4><div class="meta">LG Group · Apr 2016 – Oct 2016</div><p>Participated in a social innovation and communication program. <a class="link" href="https://www.youtube.com/@lgchallengers" target="_blank">YouTube Channel</a></p></div>
+    </div>
+  </section>
+
+  <section id="presentations" class="sheet reveal">
+    <div class="sheet-head"><span class="sheetno">08</span><h3><svg class="icon" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>Academic Presentations</h3><hr></div>
+    <div class="grid">
+      <div class="card"><div class="kind">Talk</div><h4>Hidden Leaders of the Provisional Government of the Republic of Korea</h4><div class="meta">Fudan University · Shanghai, China · May 2019</div><p>Presentation on General Noh Baek-rin, a founder of the Republic of Korea Air Force.</p><p><a class="link" href="https://youtu.be/eA_nahntCko" target="_blank">Watch Presentation</a></p></div>
+      <div class="card"><div class="kind">Talk</div><h4>Youth Unemployment in Korea and Germany</h4><div class="meta">Freie Universität Berlin · Berlin, Germany · Jun 2019</div><p>Comparative study and presentation on youth unemployment rates in Korea and Germany.</p><p><a class="link" href="https://youtu.be/UfhyhsgZ_js" target="_blank">Watch Presentation</a></p></div>
+    </div>
+  </section>
+
+  <section id="reports" class="sheet reveal">
+    <div class="sheet-head"><span class="sheetno">09</span><h3><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>Academic Reports &amp; Coursework</h3><hr></div>
+    <div class="filelist">
+      <div class="file-row"><div><span class="file-id">RPT-001</span><span class="file-title">Capstone Project Report</span><div class="file-meta">Academic project documentation</div></div><a class="file-link" href="https://drive.google.com/file/d/1KLnJ3DZtqqE12zJ9TVXZ59D_XK8tBAJM/view?usp=sharing" target="_blank">OPEN <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></div>
+      <div class="file-row"><div><span class="file-id">RPT-002</span><span class="file-title">Robotics Laboratory · Report 002</span><div class="file-meta">Robotics laboratory coursework</div></div><a class="file-link" href="https://drive.google.com/file/d/1837vkGTa_2aYg4lGs0v9MjyYg8tj3gP4/view?usp=sharing" target="_blank">OPEN <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></div>
+      <div class="file-row"><div><span class="file-id">RPT-003</span><span class="file-title">Robotics Laboratory · Report 003</span><div class="file-meta">Robotics laboratory coursework</div></div><a class="file-link" href="https://drive.google.com/file/d/18QwD_S_vvZ4KhD05pbwsWmID2PSZJmU4/view?usp=sharing" target="_blank">OPEN <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></div>
+      <div class="file-row"><div><span class="file-id">RPT-004</span><span class="file-title">Robotics Laboratory · Report 004</span><div class="file-meta">Robotics laboratory coursework</div></div><a class="file-link" href="https://drive.google.com/file/d/1ZOUpi8s6plcqnOBJUu5J0xYbN6gTomQz/view?usp=sharing" target="_blank">OPEN <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></div>
+      <div class="file-row"><div><span class="file-id">RPT-005</span><span class="file-title">Automatic Control Report</span><div class="file-meta">Control engineering coursework</div></div><a class="file-link" href="https://drive.google.com/file/d/1uWfsezQnhm9PWY3MH9UlXjAhItVdT46J/view?usp=sharing" target="_blank">OPEN <svg class="icon" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a></div>
+    </div>
+  </section>
+
+  <footer class="titleblock">
+    <span>DRAWN BY: D. CHO</span>
+    <span>SHEET: 00–09 OF 09</span>
+    <span>REV: 2026.07</span>
+    <span>SCALE: N/A</span>
+  </footer>
+</main>
+</div>
+
+<script>
+// scroll-spy for rail nav
+const links = document.querySelectorAll('#tabs a');
+const map = new Map();
+links.forEach(a=>{const id=a.getAttribute('href').slice(1);const el=document.getElementById(id);if(el)map.set(el,a);});
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    const link = map.get(e.target);
+    if(!link) return;
+    if(e.isIntersecting) links.forEach(l=>l.classList.remove('active')), link.classList.add('active');
+  });
+},{rootMargin:'-40% 0px -50% 0px'});
+map.forEach((_,el)=>io.observe(el));
+
+// reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+const ro = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target);} });
+},{threshold:0.08});
+reveals.forEach(el=>ro.observe(el));
+</script>
+</body>
+</html>
